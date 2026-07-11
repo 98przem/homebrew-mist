@@ -7,9 +7,6 @@ cask "mist" do
   desc "Play Windows Steam and Epic games through Wine"
   homepage "https://github.com/98przem/mist"
 
-  # Mist ships its own in-app updater, so the cask always fetches the newest
-  # release rather than pinning a version.
-  auto_updates true
   depends_on macos: :sonoma
 
   app "Mist.app"
