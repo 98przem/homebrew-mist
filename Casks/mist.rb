@@ -1,6 +1,6 @@
 cask "mist" do
-  version "0.18.0"
-  sha256 "98c3e639a2bfaf199dfde883e1fa7060633adf291b57bb2a270bca89ca8b5a31"
+  version "0.19.0"
+  sha256 "6341edad231c665037be3fc325e343e0fbf4a0955383d93e1b00a2a7006ac496"
 
   url "https://github.com/98przem/mist/releases/download/v#{version}/Mist.dmg"
   name "Mist"
