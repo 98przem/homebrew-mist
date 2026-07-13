@@ -1,8 +1,8 @@
 cask "mist" do
-  version :latest
-  sha256 :no_check
+  version "0.8.0"
+  sha256 "1e44ba2fb254fb17af6c4613f61536607338e8036ff60e7f0cf69e07fce2d508"
 
-  url "https://github.com/98przem/mist/releases/latest/download/Mist.dmg"
+  url "https://github.com/98przem/mist/releases/download/v#{version}/Mist.dmg"
   name "Mist"
   desc "Play Windows Steam and Epic games through Wine"
   homepage "https://github.com/98przem/mist"
@@ -21,4 +21,13 @@ cask "mist" do
     "~/Library/Preferences/com.mist.app.plist",
     "~/Library/Saved Application State/com.mist.app.savedState",
   ]
+
+  # Bumped automatically by mist's own release workflow on every tag push (see
+  # 98przem/mist/.github/workflows/release.yml) — version/sha256 above should
+  # always match the newest GitHub release, which is what makes `brew upgrade`
+  # actually detect new versions (the old `version :latest` never did).
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
 end
