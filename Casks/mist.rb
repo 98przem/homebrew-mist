@@ -11,6 +11,16 @@ cask "mist" do
 
   app "Mist.app"
 
+  # Mist is ad-hoc signed (no paid Developer ID, so no notarization) — without
+  # this, the quarantine bit `brew install --cask` leaves on a freshly
+  # downloaded app makes Gatekeeper run it via App Translocation from a
+  # read-only mirrored path instead of the real /Applications/Mist.app.
+  # Confirmed live: the app launched, showed zero windows, and the process
+  # kept respawning — clearing quarantine after install fixes it outright.
+  postflight do
+    system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{appdir}/Mist.app"], sudo: false
+  end
+
   # `brew uninstall --zap mist` removes the app AND every trace of its data:
   # the whole Wine prefix + downloaded games + engine, the login/session files,
   # per-game settings, and preferences.
